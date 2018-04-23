@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+        dateFormat: 'mm/dd/yy',
+        yearRange: "2018:2019"
+    });
+  } );
+  </script>
+</head>
+
+<?php echo $this->flashSession->output();?> 
+<?php if($data){?>
+
+    <form action="" method="post" enctype="multipart/form-data">
+    <center>
+    <label>ชื่อกิจกรรม</label>
+    <input type="text" class="form-control" placeholder="ชื่อกิจกรรม" required name="name" value="<?php echo $data->name?>">
+    <br><label>วันที่</label>
+    <input type="text" class="form-control" id="datepicker" placeholder="mm/dd/yyyy" required name="date" value="<?php echo $data->date?>">
+    <br><label>รายละเอียด</label>
+    <textarea class="form-control" placeholder="รายละเอียด" required rows="4" name="details"><?php echo $data->detail?></textarea>
+    <br><label>ภาพกิจกรรม</label><br>
+    <img src="<?php echo $this->url->getBaseUri().'public/img/event/'.$data->picture ?> "><hr>
+    <div class="custom-file">
+    <input type="file" name="photo"  class="custom-file-input"  >
+    <label class="custom-file-label" >Choose file</label>
+    </div>
+    <hr><button type="submit" class="btn btn-light">save</button>
+    </center>
+    </form>
+<?php }   ?>
